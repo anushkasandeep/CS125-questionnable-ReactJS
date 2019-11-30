@@ -1,3 +1,17 @@
+## TITLE: Questionnable-React for CS 125
+This project aims to be the alternative to PrairieLearn by allowing students of CS 125 to write, run, and share the code they write with
+others and view the solutions on the side. This can be incorporated into the class website of CS 125 by treating them as react components which are programmed using JavaScript. 
+
+## Installation
+Yarn, version 1.19.1
+
+## Running the program
+Run it by typing 
+
+npm start
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -47,22 +61,3 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
