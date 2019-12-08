@@ -1,35 +1,39 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super (props);
-    this.state = {
-      value: 'Type your code here'
-    };
+    this.state = {isToggleOn: true};
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
     this.setState(state => ({
-      event.preventDefault();
-//to be continued
+      isToggleOn: !state.isToggleOn
     }));
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header"> 
-          <textarea value={this.state.value} onChange={this.handleChange} cols={40} rows={10} /> 
-            <button onClick={this.handleClick}>
-            {this.state.isToggleOn ? 'Your Code'}
-            </button>
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <button onClick={this.handleClick}>
+            {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
+          </button>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
         </header>
       </div>
     );
@@ -37,5 +41,3 @@ class App extends Component {
 }
 
 export default App;
-// adding commennt for testing
-
