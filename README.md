@@ -9,9 +9,10 @@ sudo apt update
 sudo apt install yarn
 
 ## Running the program
-Run it by typing:
-
+Run it by typing
+```
 npm start
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
