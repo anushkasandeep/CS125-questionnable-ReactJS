@@ -2,7 +2,7 @@
 This project aims to be the alternative to PrairieLearn by allowing students of CS 125 to write, run, and share the code they write with others and view the solutions on the side. This can be incorporated into the class website of CS 125 by treating them as react components which are programmed using JavaScript. After following the instructions for installing and running the program given below, this should open in your web browser. You should be able to see one textbox where students write their code and two buttons at the bottom. These buttons can be toggled to either view the code written or view the solutions. Goodbye PrairieLearn, hello Questionnable-React!
 
 ## Installation
-Yarn, version 1.19.1
+Yarn- version 1.19.1
 
 sudo apt update
 sudo apt install yarn
@@ -10,6 +10,11 @@ sudo apt install yarn
 ## Running the program
 
 Start the development server with:
+=======
+Run it by typing
+```
+npm start
+```
 
 ```
 $ yarn start
