@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import ReactAce from 'react-ace-editor';
 import './App.css';
+import Main from './Ace';
+import AceEditor from 'react-ace';
+import { Ace } from 'ace-builds';
 
 //this class is for the buttons and tables
 class App extends Component {
@@ -24,9 +26,9 @@ class App extends Component {
             {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
           </button>
         </header>
+        <AceEditor />
       </div>
     );
   }
 }
-
 export default App
