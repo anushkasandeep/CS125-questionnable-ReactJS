@@ -14,6 +14,10 @@ React-ACE
 ```
 $ yarn install 
 ```
+```
+$ npm install react-ace
+```
+
 Note: You might get a typescript warning but you can ignore that.
 ## Running the program
 
