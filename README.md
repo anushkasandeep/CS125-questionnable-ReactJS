@@ -7,6 +7,10 @@ Yarn- version 1.19.1
 sudo apt update
 sudo apt install yarn
 
+React-ACE
+```
+npm install react-ace
+```
 ## Running the program
 
 Start the development server with:
