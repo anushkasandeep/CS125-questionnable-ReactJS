@@ -3,9 +3,12 @@ This project aims to be the alternative to PrairieLearn by allowing students of 
 
 ## Installation
 Yarn- version 1.19.1
-
+```
 sudo apt update
+```
+```
 sudo apt install yarn
+```
 
 React-ACE
 ```
