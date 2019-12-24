@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/mode-kotlin";
+import "ace-builds/src-noconflict/theme-dracula";
 import { Ace } from 'ace-builds';
 
 //this class is for the buttons and tables
@@ -24,7 +25,8 @@ class App extends Component {
       <div className="App">
         <AceEditor 
           mode="java"
-          theme="github"
+          mode="kotlin"
+          theme="dracula"
         />
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
