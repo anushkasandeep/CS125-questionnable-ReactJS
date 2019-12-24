@@ -14,6 +14,7 @@ React-ACE
 ```
 $ yarn install 
 ```
+Note: You might get a typescript warning but you can ignore that.
 ## Running the program
 
 Start the development server with:
