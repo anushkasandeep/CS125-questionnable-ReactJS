@@ -4,7 +4,6 @@ import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-kotlin";
 import "ace-builds/src-noconflict/theme-dracula";
-import { Ace } from 'ace-builds';
 
 //this class is for the buttons and tables
 class App extends Component {
@@ -24,8 +23,8 @@ class App extends Component {
     return (
       <div className="App">
         <AceEditor 
-          mode="java"
-          mode="kotlin"
+          mode="java" 
+          //mode="kotlin"
           theme="dracula"
         />
         <button onClick={this.handleClick}>
