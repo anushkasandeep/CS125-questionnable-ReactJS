@@ -24,7 +24,7 @@ class App extends Component {
       <div className="App">
         <AceEditor 
           mode="java" 
-          //mode="kotlin"
+          mode="kotlin"
           theme="dracula"
         />
         <button onClick={this.handleClick}>
