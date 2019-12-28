@@ -4,6 +4,7 @@ import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-kotlin";
 import "ace-builds/src-noconflict/theme-dracula";
+import ThemeSwitch from './src/ThemeSwitch'
 
 //this class is for the buttons and tables
 class App extends Component {
@@ -24,22 +25,30 @@ class App extends Component {
       isTog: !state.isTog
     }));
   }
-  switchTheme() {
+  handleTheme() {
     this.setState(state => ({
       isTo: !state.isTo
     }));
   }
+  switchTheme() {
+    if (handleTheme() = true) {
+      App.AceEditor.theme="dawn"
+    }
+    App.AceEditor.theme="dracula"
+  }
+
   render() {
     return (
       <div className="App">
         <button onClick={this.handleCluck}>
           {this.state.isTog ? 'Java': 'Kotlin'}
         </button>
-        <button onClick={this.switchTheme}>
+        <button onClick={this.handleTheme}>
           {this.state.isTo ? 'Light' : 'Dark'}
         </button>
+        <ThemeSwitch/>
         <AceEditor 
-          theme="dracula"
+          //theme={this.switchTheme}
           mode="java"
           mode="kotlin"
         />
