@@ -10,7 +10,6 @@ class App extends Component {
   constructor(props) {
     super (props);
     this.state = {isToggleOn: true};
-    this.state1 = {isTog: true};
     this.handleClick = this.handleClick.bind(this);
     this.handleCluck = this.handleCluck.bind(this);
     this.switchTheme = this.switchTheme.bind(this);
