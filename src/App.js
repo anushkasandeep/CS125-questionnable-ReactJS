@@ -13,6 +13,7 @@ class App extends Component {
     this.state1 = {isTog: true};
     this.handleClick = this.handleClick.bind(this);
     this.handleCluck = this.handleCluck.bind(this);
+    this.switchTheme = this.switchTheme.bind(this);
   }
   handleClick() {
     this.setState(state => ({
@@ -24,11 +25,19 @@ class App extends Component {
       isTog: !state.isTog
     }));
   }
+  switchTheme() {
+    this.setState(state => ({
+      isTo: !state.isTo
+    }));
+  }
   render() {
     return (
       <div className="App">
         <button onClick={this.handleCluck}>
-          {this.state.isTog ? 'Java' : 'Kotlin'}
+          {this.state.isTog ? 'Java': 'Kotlin'}
+        </button>
+        <button onClick={this.switchTheme}>
+          {this.state.isTo ? 'Light' : 'Dark'}
         </button>
         <AceEditor 
           theme="dracula"
