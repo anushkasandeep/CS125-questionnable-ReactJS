@@ -10,27 +10,30 @@ class App extends Component {
   constructor(props) {
     super (props);
     this.state = {isToggleOn: true};
+    this.state1 = {isTog: true};
     this.handleClick = this.handleClick.bind(this);
+    this.handleCluck = this.handleCluck.bind(this);
   }
   handleClick() {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
     }));
   }
-
-  handleCluck = () => {
-    AceEditor.mode="kotlin";
+  handleCluck() {
+    this.setState(state => ({
+      isTog: !state.isTog
+    }));
   }
-
   render() {
     return (
       <div className="App">
-        <button onCluck={this.handleCluck}>
-          Kotlin
+        <button onClick={this.handleCluck}>
+          {this.state.isTog ? 'Java' : 'Kotlin'}
         </button>
         <AceEditor 
           theme="dracula"
           mode="java"
+          mode="kotlin"
         />
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
