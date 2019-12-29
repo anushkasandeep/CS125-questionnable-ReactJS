@@ -4,9 +4,8 @@ import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-kotlin";
 import "ace-builds/src-noconflict/theme-dracula";
-import ThemeSwitch from './src/ThemeSwitch'
+import ThemeSwitch from "./src/ThemeSwitch";
 
-//this class is for the buttons and tables
 class App extends Component {
   constructor(props) {
     super (props);
@@ -30,12 +29,6 @@ class App extends Component {
       isTo: !state.isTo
     }));
   }
-  switchTheme() {
-    if (handleTheme() = true) {
-      App.AceEditor.theme="dawn"
-    }
-    App.AceEditor.theme="dracula"
-  }
 
   render() {
     return (
@@ -48,7 +41,6 @@ class App extends Component {
         </button>
         <ThemeSwitch/>
         <AceEditor 
-          //theme={this.switchTheme}
           mode="java"
           mode="kotlin"
         />

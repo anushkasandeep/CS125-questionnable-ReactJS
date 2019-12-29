@@ -8,15 +8,18 @@ class ThemeSwitch extends Component {
         };
 
         this.css = `
-        html { filter: invert(100%); background: fefefe; }
+        html { filter: invert(100%); background: #fefefe; }
         * {background-color: inherit }
         img:not([src*="svg"]), video { filter: invert(100%) }`;
     }
-    isActive = () => {
+    isActive = () => this.state.active;
+
+    toggle = () => {
         this.setState({
             active: !this.isActive()
         });
     }
+
     render() {
         return (
             <div>
@@ -24,11 +27,10 @@ class ThemeSwitch extends Component {
                 dark theme:
                 <span aria-hidden="true">{this.isActive() ? 'on' : 'off'}</span>
             </button>
-            <style media={this.isActive() ? 'screen' : 'none'}>
-                {this.css}
+            <style media={this.isActive() ? this.css.trim() : this.css}>
             </style>
         </div>
         );
     }
 }
-export default ThemeSwitch;
+export default ThemeSwitch
