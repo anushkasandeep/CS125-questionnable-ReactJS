@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 class ThemeSwitch extends Component {
     constructor(props) {
         super(props);
@@ -9,7 +10,7 @@ class ThemeSwitch extends Component {
 
         this.css = `
         html { filter: invert(100%); background: #fefefe; }
-        * {background-color: inherit }
+        * { background-color: inherit }
         img:not([src*="svg"]), video { filter: invert(100%) }`;
     }
     isActive = () => this.state.active;
@@ -22,7 +23,7 @@ class ThemeSwitch extends Component {
 
     render() {
         return (
-            <div>
+            <div className="ThemeSwitch">
             <button aria-pressed={this.isActive()} onClick={this.toggle}>
                 dark theme:
                 <span aria-hidden="true">{this.isActive() ? 'on' : 'off'}</span>
@@ -33,4 +34,4 @@ class ThemeSwitch extends Component {
         );
     }
 }
-export default ThemeSwitch
+export default ThemeSwitch;
