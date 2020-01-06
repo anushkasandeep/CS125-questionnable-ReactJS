@@ -4,7 +4,7 @@ import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-kotlin";
 import "ace-builds/src-noconflict/theme-dracula";
-import "./components/Dacaller";
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -23,10 +23,20 @@ class App extends Component {
       isTog: !state.isTog
     }));
   }
+  
+  Dacaller() {
+    return (axios.post("https://cs125-cloud.cs.illinois.edu/jeed/", 'Content-Type: application/json', '{"label":"slider:a7e0ef3d-5cd8-475b-a60b-91b14c6e39ec:ePUfnfQHeXHitZiwnijKRNupRsiATEri","arguments":{"checkstyle":{"failOnError":true},"snippet":{"indent":2}},"snippet":"var sum = 0;\nfor (int i = 0; i < 30; i++) {\n  sum += i;\n}\nSystem.out.println(sum);\n","tasks":["execute","checkstyle","compile"]}')
+    .then(function(response) {
+        console.log(response);
+    })
+    .catch(function(error) {
+        console.log(error);
+    }));
+  }
 
   render() {
     return (
-      <div className="dark-mode">
+      <div className="light-mode">
         <div className="toggle-container">
           <span /*style={{color: this.themeSwitch() ? "black" : "yellow"}}*/>☀︎</span>
           <span className="toggle">
@@ -51,7 +61,9 @@ class App extends Component {
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
         </button>
-        <Dacaller/>
+        <h1 className="string">
+          {this.Dacaller}
+        </h1>
       </div>
     );
   }

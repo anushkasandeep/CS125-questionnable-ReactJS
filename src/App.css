@@ -71,3 +71,8 @@ input[type="checkbox"].checkbox + label {
   margin-top: 5px;
 }
 
+.string {
+  font-size: 12;
+  color: red;
+}
+
