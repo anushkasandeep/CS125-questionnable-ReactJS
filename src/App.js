@@ -24,17 +24,31 @@ class App extends Component {
     }));
   }
   
-  Dacaller() {
+  
+  /*Dacaller() {
     return (axios.post("https://cs125-cloud.cs.illinois.edu/jeed/", 'Content-Type: application/json', '{"label":"slider:a7e0ef3d-5cd8-475b-a60b-91b14c6e39ec:ePUfnfQHeXHitZiwnijKRNupRsiATEri","arguments":{"checkstyle":{"failOnError":true},"snippet":{"indent":2}},"snippet":"var sum = 0;\nfor (int i = 0; i < 30; i++) {\n  sum += i;\n}\nSystem.out.println(sum);\n","tasks":["execute","checkstyle","compile"]}')
     .then(function(response) {
-        console.log(response);
+        console.log(response.data);
     })
     .catch(function(error) {
         console.log(error);
     }));
+  }*/
+
+  Dacaller() {
+    return (axios.post("https://jsonplaceholder.typicode.com/posts", '{"userId": "1", "title": "mybody", "body: "head shoulders knees and toes"}')
+    .then(function(response) {
+      console.log(response.data);
+    })
+    .catch(function(error) {
+      console.log(error);
+    }))
   }
 
+
+
   render() {
+    //const response = axios.post('https://jsonplaceholder.typicode.com/posts', '{"userId": "1", "title": "mybody", "body: "head shoulders knees and toes"}')
     return (
       <div className="light-mode">
         <div className="toggle-container">
@@ -61,7 +75,7 @@ class App extends Component {
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
         </button>
-        <h1 className="string">
+        <h1>
           {this.Dacaller}
         </h1>
       </div>
