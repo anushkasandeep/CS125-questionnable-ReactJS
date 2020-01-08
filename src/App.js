@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {isToggleOn: true};
     this.handleClick = this.handleClick.bind(this);
     this.handleCluck = this.handleCluck.bind(this);
+    this.jeedCaller = this.jeedCaller.bind(this);
   }
   handleClick() {
     this.setState(state => ({
@@ -22,6 +23,14 @@ class App extends Component {
     this.setState(state => ({
       isTog: !state.isTog
     }));
+  }
+
+  // add functionality to the button. when it gets clicked, it should call componentDidMount() and POST what's written in ACE EDITOR as a string in "snippet"
+  //1) create the button
+  //2) create function that parses the entire string and returns the parsed string
+  //3) call that function in componentDidMount()
+  jeedCaller() {
+
   }
 
   async componentDidMount() {
@@ -57,9 +66,13 @@ class App extends Component {
           mode="java"
           //mode="kotlin"
           theme="dracula"
+          
         />
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
+        </button>
+        <button onClick={this.jeedCaller}>
+          {this.state.}
         </button>
         <h1>
         </h1>
