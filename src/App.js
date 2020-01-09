@@ -4,7 +4,6 @@ import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-kotlin";
 import "ace-builds/src-noconflict/theme-dracula";
-//import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +29,9 @@ class App extends Component {
   //2) create function that parses the entire string and returns the parsed string
   //3) call that function in componentDidMount()
   jeedCaller() {
-
+    var editor = ace.edit("aceEditor");
+    var code = editor.getValue();
+    return <h1>{code}</h1>
   }
 
   async componentDidMount() {
@@ -41,6 +42,11 @@ class App extends Component {
     })
     console.log(await response.json())
   }
+
+  /*<AceEditor
+  mode="java"
+  theme="dracula"
+  />*/
 
 
   render() {
@@ -61,20 +67,20 @@ class App extends Component {
         </div>
         <button onClick={this.handleCluck}>
           {this.state.isTog ? 'Java': 'Kotlin'}
-        </button>
-        <AceEditor 
-          mode="java"
-          //mode="kotlin"
-          theme="dracula"
-          
-        />
+        </button>        
+        <div id="editor" style="height: 500px; width: 500px">some text</div>
+        <script src="src/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+          var editor = ace.edit("editor");
+        </script>
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
         </button>
         <button onClick={this.jeedCaller}>
-          {this.state.}
+          Submit Code
         </button>
         <h1>
+          {this.jeedCaller()}
         </h1>
       </div>
     );
