@@ -10,36 +10,27 @@ class App extends Component {
     super (props);
     this.state = {isToggleOn: true};
     this.state = {isTog: true};
-    this.state = {isSubmitted: true};
     this.handleClick = this.handleClick.bind(this);
     this.handleCluck = this.handleCluck.bind(this);
-    this.state = {code:"code"};
-    this.onChange = this.onChange.bind(this);
-    
+    this.codeToString = this.codeToString.bind(this);
+    this.theCode = React.createRef();
   }
+
   handleClick() {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
     }));
   }
+
   handleCluck() {
     this.setState(state => ({
       isTog: !state.isTog
     }));
   }
 
-  onChange(newValue) {
-    this.setState(state => ({
-      isSubmitted
-    }));
-    this.state.code = newValue;
-    return <h1>{console.log(newValue)}</h1>
+  codeToString() {
+    alert (JSON.stringify(this.theCode.current.editor.getValue()));
   }
-
-  // add functionality to the button. when it gets clicked, it should call componentDidMount() and POST what's written in ACE EDITOR as a string in "snippet"
-  //1) create the button
-  //2) create function that parses the entire string and returns the parsed string
-  //3) call that function in componentDidMount()
 
   async componentDidMount() {
     const response = await fetch("https://cs125-cloud.cs.illinois.edu/jeed/", {
@@ -72,21 +63,32 @@ class App extends Component {
         <AceEditor
         mode="java"
         theme="dracula"
-        name="ace-editor"
-        onLoad={this.onLoad}
-        onChange={this.onChange}
+        ref={this.theCode}
         />
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
         </button>
-        <button onClick={this.onChange}>
-          Submit Code
+        <button onClick={this.codeToString}>
+          Run Code
         </button>
-        <h1>
-          {this.onChange}
-        </h1>
       </div>
     );
   }
 }      
 export default App
+
+
+// i write code in ace editor. editor's state keeps changing. i don't want instantaneous change of state.
+// when i click the run button, the final instance of ace editor should be passed into the function probably as an argument and the function would get the value of that instance
+// that function return the getValue as a string
+
+// 2 functions! 
+// function 1: function 1 stores the current state of ace editor. 
+
+//ace editor passes its current instance to funct1. funct1 holds state of ace editor and returns the value of that instance
+// button activated functTwo which 
+
+// you actually didn't need the first function to constantly store the state.
+// refs would do that job for you 
+// refs are appropriate to use when a function wants to access something from the rendered elements.
+// this is the opposite of what usually happens where the rendered elements access the functions
