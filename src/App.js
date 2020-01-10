@@ -9,9 +9,13 @@ class App extends Component {
   constructor(props) {
     super (props);
     this.state = {isToggleOn: true};
+    this.state = {isTog: true};
+    this.state = {isSubmitted: true};
     this.handleClick = this.handleClick.bind(this);
     this.handleCluck = this.handleCluck.bind(this);
-    this.jeedCaller = this.jeedCaller.bind(this);
+    this.state = {code:"code"};
+    this.onChange = this.onChange.bind(this);
+    
   }
   handleClick() {
     this.setState(state => ({
@@ -24,15 +28,18 @@ class App extends Component {
     }));
   }
 
+  onChange(newValue) {
+    this.setState(state => ({
+      isSubmitted
+    }));
+    this.state.code = newValue;
+    return <h1>{console.log(newValue)}</h1>
+  }
+
   // add functionality to the button. when it gets clicked, it should call componentDidMount() and POST what's written in ACE EDITOR as a string in "snippet"
   //1) create the button
   //2) create function that parses the entire string and returns the parsed string
   //3) call that function in componentDidMount()
-  jeedCaller() {
-    var editor = ace.edit("aceEditor");
-    var code = editor.getValue();
-    return <h1>{code}</h1>
-  }
 
   async componentDidMount() {
     const response = await fetch("https://cs125-cloud.cs.illinois.edu/jeed/", {
@@ -42,12 +49,6 @@ class App extends Component {
     })
     console.log(await response.json())
   }
-
-  /*<AceEditor
-  mode="java"
-  theme="dracula"
-  />*/
-
 
   render() {
     return (
@@ -68,19 +69,21 @@ class App extends Component {
         <button onClick={this.handleCluck}>
           {this.state.isTog ? 'Java': 'Kotlin'}
         </button>        
-        <div id="editor" style="height: 500px; width: 500px">some text</div>
-        <script src="src/ace.js" type="text/javascript" charset="utf-8"></script>
-        <script>
-          var editor = ace.edit("editor");
-        </script>
+        <AceEditor
+        mode="java"
+        theme="dracula"
+        name="ace-editor"
+        onLoad={this.onLoad}
+        onChange={this.onChange}
+        />
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
         </button>
-        <button onClick={this.jeedCaller}>
+        <button onClick={this.onChange}>
           Submit Code
         </button>
         <h1>
-          {this.jeedCaller()}
+          {this.onChange}
         </h1>
       </div>
     );
