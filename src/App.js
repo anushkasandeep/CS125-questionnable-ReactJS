@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   codeToString() {
-    alert (JSON.stringify(this.theCode.current.editor.getValue()));
+    return <h1>{(JSON.stringify(this.theCode.current.editor.getValue()))}</h1>;
   }
 
   async componentDidMount() {
@@ -38,7 +38,7 @@ class App extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ "label":"slider:a7e0ef3d-5cd8-475b-a60b-91b14c6e39ec:ePUfnfQHeXHitZiwnijKRNupRsiATEri","arguments":{"checkstyle":{"failOnError":true},"snippet":{"indent":2}},"snippet":"var sum = 0;\nfor (int i = 0; i < 30; i++) {\n  sum += i;\n}\nSystem.out.println(sum);\n","tasks":["execute","checkstyle","compile"]}),
     })
-    console.log(await response.json())
+    alert (JSON.stringify(await response.json()));
   }
 
   render() {
