@@ -29,16 +29,17 @@ class App extends Component {
   }
 
   codeToString() {
-    return <h1>{(JSON.stringify(this.theCode.current.editor.getValue()))}</h1>;
+    var studentCode = JSON.stringify(this.theCode.current.editor.getValue());
+    this.componentDidMount(studentCode);
   }
 
-  async componentDidMount() {
+  async componentDidMount(args) {
     const response = await fetch("https://cs125-cloud.cs.illinois.edu/jeed/", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ "label":"slider:a7e0ef3d-5cd8-475b-a60b-91b14c6e39ec:ePUfnfQHeXHitZiwnijKRNupRsiATEri","arguments":{"checkstyle":{"failOnError":true},"snippet":{"indent":2}},"snippet":"var sum = 0;\nfor (int i = 0; i < 30; i++) {\n  sum += i;\n}\nSystem.out.println(sum);\n","tasks":["execute","checkstyle","compile"]}),
+      body: JSON.stringify({ "label":"slider:a7e0ef3d-5cd8-475b-a60b-91b14c6e39ec:ePUfnfQHeXHitZiwnijKRNupRsiATEri","arguments":{"checkstyle":{"failOnError":true},"snippet":{"indent":2}},"snippet":args,"tasks":["execute","checkstyle","compile"]}),
     })
-    alert (JSON.stringify(await response.json()));
+    console.log(JSON.stringify(await response.json()));
   }
 
   render() {
@@ -92,3 +93,6 @@ export default App
 // refs would do that job for you 
 // refs are appropriate to use when a function wants to access something from the rendered elements.
 // this is the opposite of what usually happens where the rendered elements access the functions
+
+//the jeed response:
+// 
