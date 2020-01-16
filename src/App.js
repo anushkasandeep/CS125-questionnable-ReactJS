@@ -72,6 +72,9 @@ class App extends Component {
         <button onClick={this.codeToString}>
           Run Code
         </button>
+        <Segment>
+          hello!
+        </Segment>
       </div>
     );
   }
