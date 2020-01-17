@@ -4,11 +4,12 @@ import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-kotlin";
 import "ace-builds/src-noconflict/theme-dracula";
-//import { Segment } from 'semantic-ui-react';
+
 
 class App extends Component {
   constructor(props) {
     super (props);
+
     this.state = {isToggleOn: true};
     this.state = {isTog: true};
     this.handleClick = this.handleClick.bind(this);
@@ -40,10 +41,10 @@ class App extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ "label":"slider:a7e0ef3d-5cd8-475b-a60b-91b14c6e39ec:ePUfnfQHeXHitZiwnijKRNupRsiATEri","arguments":{"checkstyle":{"failOnError":true},"snippet":{"indent":2}},"snippet":args,"tasks":["execute","checkstyle","compile"]}),
     })
-    console.log(JSON.stringify(await response.json()));
+    return <h1>{(JSON.stringify(await response.json()))}</h1>;
   }
 
-  render() {
+  render() {    
     return (
       <div className="light-mode">
         <div className="toggle-container">
@@ -73,10 +74,12 @@ class App extends Component {
         <button onClick={this.codeToString}>
           Run Code
         </button>
+        {this.componentDidMount}
       </div>
     );
   }
-}      
+}  
+    
 export default App
 
 
