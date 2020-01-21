@@ -4,7 +4,9 @@ import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-kotlin";
 import "ace-builds/src-noconflict/theme-dracula";
-
+import "./components/outputBox";
+import Footer from './components/outputBox';
+//import { Segment } from "semantic-ui-react";
 
 class App extends Component {
   constructor(props) {
@@ -65,6 +67,7 @@ class App extends Component {
         </button>        
         <AceEditor
         mode="java"
+        mode="kotlin"
         theme="dracula"
         ref={this.theCode}
         />
@@ -74,7 +77,7 @@ class App extends Component {
         <button onClick={this.codeToString}>
           Run Code
         </button>
-        {this.componentDidMount}
+        <Footer />
       </div>
     );
   }
