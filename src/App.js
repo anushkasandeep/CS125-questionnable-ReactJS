@@ -5,7 +5,7 @@ import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-kotlin";
 import "ace-builds/src-noconflict/theme-dracula";
 import "./components/outputBox";
-import Footer from './components/outputBox';
+//import Footer from './components/outputBox';
 //import { Segment } from "semantic-ui-react";
 
 class App extends Component {
@@ -43,8 +43,16 @@ class App extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ "label":"slider:a7e0ef3d-5cd8-475b-a60b-91b14c6e39ec:ePUfnfQHeXHitZiwnijKRNupRsiATEri","arguments":{"checkstyle":{"failOnError":true},"snippet":{"indent":2}},"snippet":args,"tasks":["execute","checkstyle","compile"]}),
     })
-    alert(JSON.stringify(await response.json()));
+    return <h6>{response}</h6>;
   }
+
+  myFuckery() {
+    return <h6>Anushki is dumb</h6>
+  }
+
+  //errorReturner(args) {
+    //return <h1>{args}</h1>;
+  //}
 
   render() {    
     return (
@@ -66,8 +74,8 @@ class App extends Component {
           {this.state.isTog ? 'Java': 'Kotlin'}
         </button>        
         <AceEditor
-        mode="java"
-        mode="kotlin"
+        mode="java" 
+        //mode="kotlin"
         theme="dracula"
         ref={this.theCode}
         />
@@ -77,7 +85,7 @@ class App extends Component {
         <button onClick={this.codeToString}>
           Run Code
         </button>
-        <Footer />
+        <h6>{this.componentDidMount()}</h6>
       </div>
     );
   }
@@ -103,13 +111,5 @@ refs would do that job for you
 refs are appropriate to use when a function wants to access something from the rendered elements.
 this is the opposite of what usually happens where the rendered elements access the functions
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-01/16
-1) create a visible segment
-2) display the jeed output in that segment
-3) add compiled:
-       checkstyle:
-       output:
-4) add loading sympols to each one (make it look 'fast') with a 0.25s timer or something
-5) parse the jeed output and display the appropriate portion of the string next to either compiled:, checkstyle:, or output:.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+01/21
 */

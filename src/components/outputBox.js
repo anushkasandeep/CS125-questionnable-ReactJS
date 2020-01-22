@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+/*import React, { Component } from "react";
 import { Segment } from "semantic-ui-react";
 
 //export const SegmentExamplePlaceholder = () => (
