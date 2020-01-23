@@ -43,16 +43,10 @@ class App extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ "label":"slider:a7e0ef3d-5cd8-475b-a60b-91b14c6e39ec:ePUfnfQHeXHitZiwnijKRNupRsiATEri","arguments":{"checkstyle":{"failOnError":true},"snippet":{"indent":2}},"snippet":args,"tasks":["execute","checkstyle","compile"]}),
     })
-    return <h6>{response}</h6>;
+    var finResponse = JSON.stringify(await response.json());
+    return finResponse;
   }
 
-  myFuckery() {
-    return <h6>Anushki is dumb</h6>
-  }
-
-  //errorReturner(args) {
-    //return <h1>{args}</h1>;
-  //}
 
   render() {    
     return (
@@ -85,7 +79,7 @@ class App extends Component {
         <button onClick={this.codeToString}>
           Run Code
         </button>
-        <h6>{this.componentDidMount()}</h6>
+        
       </div>
     );
   }
