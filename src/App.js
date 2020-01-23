@@ -18,6 +18,9 @@ class App extends Component {
     this.handleCluck = this.handleCluck.bind(this);
     this.codeToString = this.codeToString.bind(this);
     this.theCode = React.createRef();
+    this.state={
+      errorMessage:"",
+    }
   }
 
   handleClick() {
@@ -44,7 +47,9 @@ class App extends Component {
       body: JSON.stringify({ "label":"slider:a7e0ef3d-5cd8-475b-a60b-91b14c6e39ec:ePUfnfQHeXHitZiwnijKRNupRsiATEri","arguments":{"checkstyle":{"failOnError":true},"snippet":{"indent":2}},"snippet":args,"tasks":["execute","checkstyle","compile"]}),
     })
     var finResponse = JSON.stringify(await response.json());
-    return finResponse;
+    this.setState({
+      errorMessage:finResponse,
+    })
   }
 
 
@@ -79,7 +84,9 @@ class App extends Component {
         <button onClick={this.codeToString}>
           Run Code
         </button>
-        
+        <div>
+          {this.state.errorMessage}
+        </div>
       </div>
     );
   }
