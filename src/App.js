@@ -89,9 +89,10 @@ class App extends Component {
                             "tasks":["execute","kompile"]}),
     })
     //alert(JSON.stringify(await response.json()));
-    var finResponse = JSON.stringify(await response.json());
+    var finResponse = await response.json();
+    var fResponse = JSON.stringify(finResponse)
     this.setState({
-      errorMessage:finResponse
+      errorMessage:fResponse
     })
   }
 
