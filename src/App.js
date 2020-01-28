@@ -5,6 +5,7 @@ import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-kotlin";
 import "ace-builds/src-noconflict/theme-dracula";
 import "./components/outputBox";
+
 //import Footer from './components/outputBox';
 //import { Segment } from "semantic-ui-react";3
 
@@ -38,9 +39,7 @@ class App extends Component {
   codeToString() {
     var studentCode = JSON.stringify(this.theCode.current.editor.getValue());
     var newStudentCode = studentCode.replace("\r", "\n")
-    
     this.componentDidMount(newStudentCode);
-    
   }
   
  
@@ -99,6 +98,8 @@ class App extends Component {
         //mode="java" 
         mode="kotlin"
         theme="dracula"
+        width="575px"
+        fontSize="15px"
         ref={this.theCode}
         />
         <button onClick={this.handleClick}>
@@ -107,8 +108,11 @@ class App extends Component {
         <button onClick={this.codeToString}>
           Run Code
         </button>
-        <div>
-          {this.state.errorMessage}
+        <div className="box">
+          COMPILATION STATUS
+          <div>
+            {this.state.errorMessage}
+          </div>
         </div>
       </div>
     );

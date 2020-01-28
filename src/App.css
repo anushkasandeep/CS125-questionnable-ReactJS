@@ -76,3 +76,12 @@ h1 {
   margin-bottom: auto;
 }
 
+.box {
+  background-color: teal;
+  height: auto;
+  font-size: 16 px;
+  color: white;
+  word-wrap: normal;
+  position: absolute;
+  display: flex
+}
