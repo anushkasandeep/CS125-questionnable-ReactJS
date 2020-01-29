@@ -22,6 +22,7 @@ class App extends Component {
     this.state={
       errorMessage:"",
     }
+    this.onChange = this.onChange.bind(this);
   }
 
   handleClick() {
@@ -41,7 +42,7 @@ class App extends Component {
     var newStudentCode = studentCode.replace("\r", "\n")
     this.componentDidMount(newStudentCode);
   }
-  
+
  
   /*FOR JAVA
   async componentDidMount(args) {
@@ -56,6 +57,10 @@ class App extends Component {
     })
   }
   */
+
+  onChange(newValue) {
+    this.setState({newValue: newValue});
+  }
   
   async componentDidMount(args) { 
     const response = await fetch("https://cs125-cloud.cs.illinois.edu/jeed/", {
@@ -69,8 +74,9 @@ class App extends Component {
     //alert(JSON.stringify(await response.json()));
     var finResponse = await response.json();
     var fResponse = JSON.stringify(finResponse);
+    var errorResponse = fResponse;
     this.setState({
-      errorMessage:fResponse
+      errorMessage:errorResponse
     })
   }
 
@@ -101,6 +107,8 @@ class App extends Component {
         width="575px"
         fontSize="15px"
         ref={this.theCode}
+        onChange={this.onChange}
+        value={this.state.newValue}
         />
         <button onClick={this.handleClick}>
           {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
