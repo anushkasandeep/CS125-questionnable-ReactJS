@@ -6,9 +6,6 @@ import "ace-builds/src-noconflict/mode-kotlin";
 import "ace-builds/src-noconflict/theme-dracula";
 import "./components/outputBox";
 
-//import Footer from './components/outputBox';
-//import { Segment } from "semantic-ui-react";3
-
 class App extends Component {
   constructor(props) {
     super (props);
@@ -71,7 +68,6 @@ class App extends Component {
                             "sources":[{"path":"Main.kt","contents":args}],
                             "tasks":["execute","kompile"]}),
     })
-    //alert(JSON.stringify(await response.json()));
     var finResponse = await response.json();
     var fResponse = JSON.stringify(finResponse);
     var errorResponse = fResponse;
