@@ -78,6 +78,8 @@ h1 {
 
 .box {
   background-color: teal;
+  width: 575px;
+  padding: 10px;
   font-size: 16 px;
   color: white;
 }
