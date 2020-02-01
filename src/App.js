@@ -58,23 +58,6 @@ class App extends Component {
   onChange(newValue) {
     this.setState({newValue: newValue});
   }
-  
-  /*async componentDidMount(args) { 
-    const response = await fetch("https://cs125-cloud.cs.illinois.edu/jeed/", {
-      method: 'POST',
-      headers: { 'Content-Type' : 'application/json; charset=utf-8' },
-      body: JSON.stringify({ "label": "questionable-kotlin",
-                            "arguments":{"execution":{"klass":"MainKt","method":"main()"}},
-                            "sources":[{"path":"Main.kt","contents":args}],
-                            "tasks":["execute","kompile"]}),
-    });
-    var finResponse = await response.json();
-    var fResponse = JSON.stringify(finResponse);
-    var errorResponse = fResponse;
-    this.setState({
-      errorMessage:errorResponse
-    })
-  }*/
 
   async componentDidMount(args) { 
     const response = await fetch("https://cs125-cloud.cs.illinois.edu/jeed/", {
