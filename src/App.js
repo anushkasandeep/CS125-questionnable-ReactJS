@@ -68,12 +68,13 @@ class App extends Component {
                             "sources":[{"path":"Main.kt","contents":args}],
                             "tasks":["execute","kompile"]}),
     });
-    var finResponse = await response.json();
-    var fResponse = JSON.stringify(finResponse.failed.kompilation.errors);
-    var errorResponse = fResponse;
+    const finResponse = await response.json();
+    //const errorResponse = JSON.stringify((finResponse.failed.kompilation.errors).map(element => element.location));
+    //const errorMessage = JSON.stringify((finResponse.failed.kompilation.errors).map(element => element.message));
+    const errorResponse = JSON.stringify((finResponse.failed.kompilation.errors));
     this.setState({
-      errorMessage:errorResponse
-    })
+      errorMessage: errorResponse
+    });
   }
 
 
