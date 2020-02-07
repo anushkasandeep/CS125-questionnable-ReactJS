@@ -8,37 +8,24 @@ import "./components/outputBox";
 
 class App extends Component {
   constructor(props) {
-    super (props);
+    super (props)
 
-    this.state = {isToggleOn: true};
-    this.state = {isTog: true};
-    this.handleClick = this.handleClick.bind(this);
-    this.handleCluck = this.handleCluck.bind(this);
-    this.codeToString = this.codeToString.bind(this);
-    this.theCode = React.createRef();
-    this.state={
-      errorMessage:" "
+    this.ace = React.createRef()
+    this.state = {
+      output: "",
+      value: ""
     }
-    this.onChange = this.onChange.bind(this);
   }
 
-  handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
-    }));
-  }
-
-  handleCluck() {
-    this.setState(state => ({
-      isTog: !state.isTog
-    }));
-  }
-
-  codeToString() {
-    var studentCode = JSON.stringify(this.theCode.current.editor.getValue());
-    var newStudentCode = studentCode.replace("\r", "\n")
-    this.componentDidMount(newStudentCode);
-  }
+  /*codeToString() {
+    console.log(this.theCode.current.editor.getValue());
+    //var studentCode = JSON.stringify(this.theCode.current.editor.getValue());
+    var studentCode = this.theCode.current.editor.getValue();
+    //var newStudentCode = studentCode.replace("\r", "\n")
+    var slicedCode = studentCode.slice(1, studentCode.length - 1);
+    console.log(slicedCode);
+    this.theOutputFunction(slicedCode);
+  }*/
 
  
   /*FOR JAVA
@@ -55,29 +42,31 @@ class App extends Component {
   }
   */
 
-  onChange(newValue) {
-    this.setState({newValue: newValue});
-  }
+  run = () => {
+    const code = this.ace.current.editor.getValue()
+    const request = { 
+      label: "questionable-kotlin", 
+      arguments:{"execution":{"klass":"MainKt","method":"main()"}},
+      sources:[{"path":"Main.kt","contents":code}],
+      tasks:["execute","kompile"]
+    };
 
-  async componentDidMount(args) { 
-    const response = await fetch("https://cs125-cloud.cs.illinois.edu/jeed/", {
+    console.log(request);
+    fetch("https://cs125-cloud.cs.illinois.edu/jeed/", {
       method: 'POST',
       headers: { 'Content-Type' : 'application/json; charset=utf-8' },
-      body: JSON.stringify({ "label": "questionable-kotlin",
-                            "arguments":{"execution":{"klass":"MainKt","method":"main()"}},
-                            "sources":[{"path":"Main.kt","contents":args}],
-                            "tasks":["execute","kompile"]}),
-    });
-    const finResponse = await response.json();
-    //const errorResponse = JSON.stringify((finResponse.failed.kompilation.errors).map(element => element.location));
-    //const errorMessage = JSON.stringify((finResponse.failed.kompilation.errors).map(element => element.message));
-    const errorResponse = JSON.stringify((finResponse.failed.kompilation.errors));
-    this.setState({
-      errorMessage: errorResponse
-    });
+      body: JSON.stringify(request),
+    }).then((response) => {
+      return response.json()
+    }).then((result) => {
+      console.log(result)
+      this.setState({ output: code })
+    })
   }
 
-
+  onChange = (value) => {
+    this.setState({ value })
+  }
 
   render() {    
     return (
@@ -94,30 +83,24 @@ class App extends Component {
             />
             <label htmlFor="checkbox" />
           </span>
-        </div>
-        <button onClick={this.handleCluck}>
-          {this.state.isTog ? 'Java': 'Kotlin'}
-        </button>        
+        </div>      
         <AceEditor
         //mode="java" 
         mode="kotlin"
         theme="dracula"
         width="575px"
         fontSize="15px"
-        ref={this.theCode}
         onChange={this.onChange}
-        value={this.state.newValue}
+        ref={this.ace}
+        value={this.state.value}
         />
-        <button onClick={this.handleClick}>
-          {this.state.isToggleOn ? 'Your Code' : 'Your Solution'}
-        </button>
-        <button onClick={this.codeToString}>
+        <button onClick={this.run}>
           Run Code
         </button>
         <div className="box">
           COMPILATION STATUS
           <div>
-            {this.state.errorMessage}
+            {this.state.output}
           </div>
         </div>
       </div>
@@ -126,3 +109,29 @@ class App extends Component {
 }  
     
 export default App
+
+// call this.setState
+
+
+  /*async componentDidMount(args) { 
+    console.log(args);
+    const request = { "label": "questionable-kotlin", "arguments":{"execution":{"klass":"MainKt","method":"main()"}},"sources":[{"path":"Main.kt","contents":args}],"tasks":["execute","kompile"]};
+    console.log(theRequest);
+    const response = await fetch("https://cs125-cloud.cs.illinois.edu/jeed/", {
+      method: 'POST',
+      headers: { 'Content-Type' : 'application/json; charset=utf-8' },
+      /*body: JSON.stringify({ "label": "questionable-kotlin",
+                            "arguments":{"execution":{"klass":"MainKt","method":"main()"}},
+                            "sources":[{"path":"Main.kt","contents":args}],
+                            "tasks":["execute","kompile"]}),*/
+      //body: JSON.stringify(theRequest),
+    //});
+    //const finResponse = await response.json();
+    //console.log(finResponse);
+    //const errorResponse = JSON.stringify((finResponse.failed.kompilation.errors).map(element => element.location));
+    //const errorMessage = JSON.stringify((finResponse.failed.kompilation.errors).map(element => element.message));
+    //const errorResponse = JSON.stringify((finResponse.failed.kompilation.errors));
+    //this.setState({
+      //errorMessage: errorResponse
+    //});
+  //}
